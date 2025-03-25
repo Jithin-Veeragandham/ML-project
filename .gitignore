@@ -1,0 +1,8 @@
+submission.csv
+test_data_scaled_encoded_shrunk.csv
+train_data_scaled_encoded_shrunk.csv
+microsoft-malware-prediction/sample_submission.csv
+microsoft-malware-prediction/test.csv
+microsoft-malware-prediction/train_encoded.csv
+microsoft-malware-prediction/train.csv
+validation_data_scaled_encoded_shrunk.csv
