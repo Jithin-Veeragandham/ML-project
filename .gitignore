@@ -6,3 +6,6 @@ microsoft-malware-prediction/test.csv
 microsoft-malware-prediction/train_encoded.csv
 microsoft-malware-prediction/train.csv
 validation_data_scaled_encoded_shrunk.csv
+
+data/
+**/.ipynb_checkpoints/
