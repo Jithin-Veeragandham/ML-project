@@ -6,3 +6,8 @@ microsoft-malware-prediction/test.csv
 microsoft-malware-prediction/train_encoded.csv
 microsoft-malware-prediction/train.csv
 validation_data_scaled_encoded_shrunk.csv
+Processed Datasets/feature_importances_new.csv
+Processed Datasets/kaggle_encoded_test.csv
+Processed Datasets/train_data_kaggle_processed.csv
+Processed Datasets/validation_data_kaggle_processed.csv
+Processed Datasets/kaggle_encoded_train.csv
