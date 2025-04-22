@@ -1,3 +1,4 @@
+data/
 submission.csv
 test_data_scaled_encoded_shrunk.csv
 train_data_scaled_encoded_shrunk.csv
