@@ -54,8 +54,17 @@ def train_and_evaluate_model(
     epochs,
     early_stopping_patience=7
 ):
-    # print(f"Training on {torch.cuda.get_device_name(0)}")
-    model = model.to('cuda')
+    
+    # Figure out which device to use. By default, CPU
+    device = "cpu"
+    # For M-architecture Macs
+    if torch.backends.mps.is_available():
+        device = torch.device("mps")
+    # For NVIDIA
+    elif torch.cuda.is_available():
+        device = torch.device("cuda")
+    print(f"Training on {device}")
+    model = model.to(device)
     best_test_loss = float('inf')
     best_test_accuracy = 0
     best_model_weights = None
@@ -79,7 +88,7 @@ def train_and_evaluate_model(
         with tqdm(train_loader, desc=f'Epoch {epoch+1}/{epochs} - LR: {current_lr:.6f}') as pbar:
             lrs.append(current_lr)
             for X_batch, y_batch in pbar:
-                X_batch, y_batch = X_batch.to('cuda'), y_batch.to('cuda')
+                X_batch, y_batch = X_batch.to(device), y_batch.to(device)
                 optimizer.zero_grad()
                 outputs = model(X_batch)
                 loss = criterion(outputs, y_batch)
@@ -112,7 +121,7 @@ def train_and_evaluate_model(
 
         with torch.no_grad():
             for X_batch, y_batch in test_loader:
-                X_batch, y_batch = X_batch.to('cuda'), y_batch.to('cuda')
+                X_batch, y_batch = X_batch.to(device), y_batch.to(device)
                 outputs = model(X_batch)
                 loss = criterion(outputs, y_batch)
                 total_test_loss += loss.item()
